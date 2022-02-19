@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>
+        Wien's displacement law calculator
+    </title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+    </script>
+    <script src="wien_displacement_law.js" charset="utf-8">
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <script src="./temperature_conversions.js"></script>
+</head>
+<body>
+<div>
+    The value of
+    <input type="text" id="degC1" placeholder="degree Celcius" oninput="c_to_f();c_to_k();c_to_r()">
+    °C is equal to
+    <br><br>
+    <input type="text" id="degF1" placeholder="degree Fahrenheit"> °F
+    <br><br>
+    <input type="text" id="degR1" placeholder="degree Rankine"> °R
+    <br><br>
+    <input type="text" id="degK1" placeholder="Kelvins"> K
+    <br><br>
+    <input type="reset" value="Reset" onclick="reset1()">
+</div>
+<hr>
+<div>
+    The value of
+    <input type="text" id="degF2" placeholder="degree Fahrenheit" oninput="f_to_c();f_to_k();f_to_r()">
+    °F is equal to
+    <br><br>
+    <input type="text" id="degC2" placeholder="degree Celcius"> °C
+    <br><br>
+    <input type="text" name="degR2" id="degR2" placeholder="degree Rankine"> °R
+    <br><br>
+    <input type="text" name="degK2" id="degK2" placeholder="Kelvin"> K
+    <br><br>
+    <input type="reset" value="Reset" onclick="reset2()">
+</div>
+<hr>
+<div>
+    The value of
+    <input type="text" name="degR4" id="degR4" placeholder="degree Rankine" oninput="r_to_c();r_to_f();r_to_k()">
+    °R is equal to
+    <br><br>
+    <input type="text" name="degC4" id="degC4" placeholder="degree Celcius"> °C
+    <br><br>
+    <input type="text" name="degF4" id="degF4" placeholder="degree Fahrenheit"> °F
+    <br><br>
+    <input type="text" name="degK4" id="degK4" placeholder="Kelvin"> K
+    <br><br>
+    <input type="reset" value="Reset" onclick="reset4()">
+</div>
+<hr>
+<div>
+    The value of
+    <input type="text" name="degK3" id="degK3" placeholder="Kelvin" oninput="k_to_c();k_to_f();k_to_r()">
+    K is equal to
+    <br><br>
+    <input type="text" name="degC3" id="degC3" placeholder="degree Celcius"> °C
+    <br><br>
+    <input type="text" name="degF3" id="degF3" placeholder="degree Fahrenheit"> °F
+    <br><br>
+    <input type="text" name="degR3" id="degR3" placeholder="degree Rankine"> °R
+    <br><br>
+    <input type="reset" value="Reset" onclick="reset3()">
+</div>
+</body>
+</html>
