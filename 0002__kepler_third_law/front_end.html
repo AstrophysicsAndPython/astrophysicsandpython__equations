@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Kepler's third law</title>
+</head>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script src="./kepler_third_law.js"></script>
+<script src="./kepler_newton_third_law.js"></script>
+<style media="screen">
+        select{
+            /* https://stackoverflow.com/a/17275968 */
+            margin-left: 100px
+        }
+        input{
+            /* https://stackoverflow.com/a/17275968 */
+            margin-left: 5px
+        }
+        select{
+            /* https://stackoverflow.com/a/34532555 */
+            text-align-last: center;
+        }
+
+</style>
+<body>
+For a primary mass \((M)\) of <input type="text" name="" id="mass" value="" placeholder="M [kg]"
+                                     oninput="calculate_time1();calculate_semimajoraxis1()"> kg
+<select onchange="t_or_a(this);reset2()" id="select_option1">
+    <option selected disabled>--Select--</option>
+    <option id="t1" value="t1">Time period</option>
+    <option id="a1" value="a1">Semimajor axis</option>
+</select>
+<br><br>
+<div id="t_value_div1" style="display: none;">
+    And a time period \((T)\) of
+    <input type="text" id="t_value_input1" oninput="calculate_semimajoraxis1()" placeholder="T [s]"> seconds
+</div>
+<div id="a_value_div1" style="display: none;">
+    And a semimajor axis \((a)\) of
+    <input type="text" id="a_value_input1" oninput="calculate_time1()" placeholder="a [m]"> meters
+</div>
+<br>
+<div id="output_div__a1" style="display: none;">
+    The semimajor axis \((a)\) comes out to be
+    <input type="text" id="output_input__a1" placeholder="a [m]"> meters.
+</div>
+<div id="output_div__t1" style="display: none;">
+    The time period \((T)\) comes out to be
+    <input type="text" id="output_input__t1" placeholder="T [s]"> seconds.
+</div>
+<br>
+<input type="reset" onclick="reset1()">
+<hr>
+For two bodies with masses <br><br>\(m_1\) =
+<input type="text" id="m1" placeholder="M1 [kg]" oninput="calculate_time2();calculate_semimajoraxis2()">
+kg,
+<br><br>
+\(m_2\) =
+<input type="text" id="m2" placeholder="M2 [kg]" oninput="calculate_time2();calculate_semimajoraxis2()">
+kg,
+<select onchange="t_or_a2(this);reset4()" id="select_option2">
+    <option selected disabled>--Select--</option>
+    <option id="t2" value="t2">Time period</option>
+    <option id="a2" value="a2">Semimajor axis</option>
+</select>
+<br><br>
+<div id="t_value_div2" style="display: none;">
+    and a time period \((T)\) of
+    <input type="text" id="t_value_input2" oninput="calculate_semimajoraxis2()" placeholder="T [s]"> seconds
+</div>
+<div id="a_value_div2" style="display: none;">
+    and a semimajor axis \((a)\) of
+    <input type="text" id="a_value_input2" oninput="calculate_time2()" placeholder="a [m]"> meters
+</div>
+<br>
+<div id="output_div__a2" style="display: none;">
+    the semimajor axis \((a)\) comes out to be
+    <input type="text" id="output_input__a2" placeholder="a [m]"> meters.
+</div>
+<div id="output_div__t2" style="display: none;">
+    the time period \((T)\) comes out to be
+    <input type="text" id="output_input__t2" placeholder="T [s]"> seconds.
+</div>
+<br>
+<input type="reset" onclick="reset3()">
+<hr>
+</body>
+</html>
