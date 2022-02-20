@@ -1,40 +1,30 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Sun Dec  5 23:57:06 2021
-
-@author: Astrophysics and Python
 """
 
 import numpy as np
 
-class UnitError(Exception):
-    pass
+import errors
 
-class TimeError(Exception):
-    pass
 
 class TimeDilation:
 
-    def __init__(self, delT, v, unit='m/s'):
-        try:
-            if delT > 0:
-                self.delT = delT
-            else:
-                raise TimeError
-        except TimeError:
-            print('Time cannot be less than 0.')
-        self.v = v
-        try:
-            if unit == 'm/s':
-                self.c = 299792458
-            elif unit == 'rel':
-                self.c = 1
-            else:
-                raise UnitError
-        except UnitError:
-            print('Unit not passed correctly, please use \'m/s\' or \'rel\'')
+    def __init__(self, elapsed_time: float, velocity_of_the_object: float, unit: str = 'm/s'):
+        self.del_t = elapsed_time if elapsed_time > 0 else -1
+        self.v = velocity_of_the_object if velocity_of_the_object > 0 else -1
+        self.c = 299792568 if unit == 'm/s' else 1 if unit == 'rel' else -1
 
-    def time_dilation(self):
-        _sqrt = np.sqrt(1 - (self.v/self.c)**2)
-        return self.delT/_sqrt
+    def __check(self):
+        if self.del_t == -1:
+            raise errors.LengthError('Length cannot be less than 0.')
+        elif self.v == -1:
+            raise errors.VelocityError('Velocity of the object cannot be less than 0.')
+        elif self.c == -1:
+            raise errors.UnitError('Unit not passed correctly, please use \'m/s\' or \'rel\'')
+
+    def beta(self) -> float:
+        return np.sqrt(1 - (self.v / self.c)**2)
+
+    def time_dilation(self) -> float:
+        _sqrt = np.sqrt(1 - (self.v / self.c)**2)
+        return self.del_t / _sqrt

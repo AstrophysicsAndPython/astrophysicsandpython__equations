@@ -1,39 +1,48 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Sun Dec  5 23:28:20 2021
-
-@author: Astrophysics and Python
 """
+
+from typing import Optional
 
 import numpy as np
 
-class UnitError(Exception):
-    pass
+from utilities import errors
 
-class LengthError(Exception):
-    pass
 
 class LengthContraction:
 
-    def __init__(self, L0, v, unit='m/s'):
-        try:
-            if L0 > 0:
-                self.L0 = L0
-            else:
-                raise LengthError
-        except LengthError:
-            print('Length cannot be less than 0.')
-        self.v = v
-        try:
-            if unit == 'm/s':
-                self.c = 299792458
-            elif unit == 'rel':
-                self.c = 1
-            else:
-                raise UnitError
-        except UnitError:
-            print('Unit not passed correctly, please use \'m/s\' or \'rel\'')
+    def __init__(self, unit: str = 'm/s'):
+        self.unit = unit
+        self.v, self.l0, self.lc = None, None, None
+        self.c = 299792458 if self.unit == '/ms' else 1 if self.unit == 'rel' else -1
 
-    def length_contraction(self):
-        return self.L0*np.sqrt(1 - (self.v/self.c)**2)
+    def beta(self) -> float:
+        return np.sqrt(1 - (self.v / self.c)**2)
+
+    def __check(self):
+        if self.v == -1:
+            raise errors.VelocityError('Velocity of the object cannot be less than 0.')
+        elif np.logical_or(self.l0 == -1, self.lc == -1):
+            raise errors.LengthError('Length cannot be less than 0.')
+        elif self.c == -1:
+            raise errors.UnitError('Unit not passed correctly, please use \'m/s\' or \'rel\'')
+
+    def __length_contraction(self):
+        return self.l0 * self.beta()
+
+    def length_contraction(self, length_of_the_object: float, velocity_of_the_object: float) -> float:
+        self.l0, self.v = length_of_the_object, velocity_of_the_object
+
+        self.__check()
+
+        return self.l0 * self.beta()
+
+    def solver(self, original_length_of_the_object: Optional[float], measured_length_of_the_object: Optional[float], velocity_of_the_object: Optional[float]) -> float:
+        self.v = velocity_of_the_object
+        self.l0 = original_length_of_the_object
+        self.lc = measured_length_of_the_object
+        self.__check()
+
+        return [self.__length_contraction() if self.lc is None else
+                self.lc / self.beta() if self.l0 is None else
+                self.c * np.sqrt(1 - self.lc**2 / self.l0**2) if np.logical_and(self.v is None, self.unit == 'm/s') else np.sqrt(1 - self.lc**2 / self.l0**2)][0]
