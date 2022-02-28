@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+    </script>
+    <script src="./relativistic_effects.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <title>Relativistic effects</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Length of the object:</td>
+        <td><input class="LC" type="text" name="" id="len" oninput="lc__mps(this);lc__c(this)" placeholder="meters"> m,
+        </td>
+    </tr>
+    <tr>
+        <td>Velocity of the object:</td>
+        <td>
+            <div id="LC__div__mps" style="display: none;">
+                <input class="LC" id="LC__speed__mps" type="text" oninput="lc__mps(this)"
+                       placeholder="meters per second"> m/s,
+            </div>
+            <div id="LC__div__c" style="display: none;">
+                <input class="LC" id="LC__speed__c" type="text" oninput="lc__c(this)" placeholder="%c"> c,
+            </div>
+        </td>
+        <td>
+            <select name="" id="LC__ss" onchange="select__LC(this)">
+                <option selected disabled>--Select--</option>
+                <option value="LC__mps">m/s</option>
+                <option value="LC__c">c</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Observed length:
+        </td>
+        <td>
+            <input class="LC" type="text" id="lc" placeholder="meters"> m.
+        </td>
+    </tr>
+</table>
+<input type="reset" value="Reset" onclick="r1()">
+<table>
+    <tr>
+        <td>Mass of the object:</td>
+        <td><input class="ME" type="text" name="" id="mass" oninput="me__mps(this);me__c(this)" placeholder="kilogram">
+            kg,
+        </td>
+    </tr>
+    <tr>
+        <td>Velocity of the object:</td>
+        <td>
+            <div id="ME__div__mps" style="display: none;">
+                <input class="ME" id="ME__speed__mps" type="text" oninput="me__mps(this)"
+                       placeholder="meters per second"> m/s,
+            </div>
+            <div id="ME__div__c" style="display: none;">
+                <input class="ME" id="ME__speed__c" type="text" oninput="me__c(this)" placeholder="%c"> c,
+            </div>
+        </td>
+        <td>
+            <select name="" id="ME__ss" onchange="select__ME(this)">
+                <option selected disabled>--Select--</option>
+                <option value="ME__mps">m/s</option>
+                <option value="ME__c">c</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Observed relativistic mass:
+        </td>
+        <td>
+            <input class="ME" type="text" id="me" placeholder="kilogram"> kg.
+        </td>
+    </tr>
+</table>
+<input type="reset" value="Reset" onclick="r2()">
+<table>
+    <tr>
+        <td>Time elapsed for the particle:</td>
+        <td><input class="TD" type="text" name="" id="time" oninput="td__mps(this);td__c(this)" placeholder="seconds">
+            s,
+        </td>
+    </tr>
+    <tr>
+        <td>Velocity of the object:</td>
+        <td>
+            <div id="TD__div__mps" style="display: none;">
+                <input class="TD" id="TD__speed__mps" type="text" oninput="td__mps(this)"
+                       placeholder="meters per second"> m/s,
+            </div>
+            <div id="TD__div__c" style="display: none;">
+                <input class="TD" id="TD__speed__c" type="text" oninput="td__c(this)" placeholder="%c"> c,
+            </div>
+        </td>
+        <td>
+            <select name="" id="TD__ss" onchange="select__TD(this)">
+                <option selected disabled>--Select--</option>
+                <option value="TD__mps">m/s</option>
+                <option value="TD__c">c</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Time elapsed for the observer:
+        </td>
+        <td>
+            <input class="TD" type="text" id="td" placeholder="seconds"> s.
+        </td>
+    </tr>
+</table>
+<input type="reset" value="Reset" onclick="r3()">
+</body>
+</html>
