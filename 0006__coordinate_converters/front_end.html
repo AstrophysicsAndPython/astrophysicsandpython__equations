@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Equatorial to galactic coordinate converter</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<p>The following input methods are parsable,</p>
+<div class="list-of-input-methods">
+    <ol class="ra-dec-list">
+        <li>Right ascension</li>
+        <ul>
+            <li>hh:mm:ss</li>
+            <li>dd.dddddd</li>
+        </ul>
+        <li>Declination</li>
+        <ul>
+            <li>dd:mm:ss</li>
+            <li>dd.dddddd</li>
+        </ul>
+    </ol>
+</div>
+
+
+<div class="ra_input">
+    The right ascension of the object is
+    <input type="text" name="right_ascension" value="" placeholder="RA [hh:mm:ss]">
+</div>
+<br>
+<div class="dec_input">
+    The declination of the object is
+    <input type="text" name="declination" value="" placeholder="Dec [dd:mm:ss]">
+</div>
+</body>
+</html>
