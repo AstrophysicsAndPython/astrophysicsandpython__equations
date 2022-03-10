@@ -28,12 +28,41 @@
                 <input type="text" id="dec1" value="">
             </td>
             <td>
-                <input type="button" id="calculate" value="Convert!" onclick="eq_to_gal()">
+                <input type="button" id="calculate" value="Convert!" onclick="eq_to_gal();dd_to_hms();dd_to_dms();">
             </td>
         </tr>
     </table>
 </div>
 <br>
+
+<div class="ra-dec-hms-output">
+    <table>
+        <tr>
+            <th>
+                RA (hh:mm:ss)
+            </th>
+            <th>
+                Dec (dd:mm:ss)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="ra-hms1" value="">
+            </td>
+            <td>
+                <input type="text" id="dec-dms1" value="">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p id="show-ra-err"></p>
+                <p id="show-dec-err"></p>
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+
 <div class="gal-lat-long-output">
     <table>
         <tr>
