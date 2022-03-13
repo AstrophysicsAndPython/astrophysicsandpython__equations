@@ -6,7 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Equatorial to galactic coordinate converter</title>
-    <script src="back_end.js"></script>
+    <script src="eq_to_gal.js"></script>
+    <script src="gal_to_eq.js"></script>
 </head>
 <body>
 
@@ -28,7 +29,7 @@
                 <input type="text" id="dec1" value="">
             </td>
             <td>
-                <input type="button" id="calculate" value="Convert!" onclick="eq_to_gal();dd_to_hms();dd_to_dms();">
+                <input type="button" id="calculate1" value="Convert!" onclick="eq_to_gal();dd_to_hms(1);dd_to_dms(1);">
             </td>
         </tr>
     </table>
@@ -51,12 +52,6 @@
             </td>
             <td>
                 <input type="text" id="dec-dms1" value="">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p id="show-ra-err"></p>
-                <p id="show-dec-err"></p>
             </td>
         </tr>
     </table>
@@ -83,6 +78,76 @@
         </tr>
     </table>
 </div>
+<br><br>
+
+<div class="gal-lat-long-input">
+    <table>
+        <tr>
+            <th>
+                Galactic latitude (dd)
+            </th>
+            <th>
+                Galactic longitude (dd)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="gal-lat2" value="">
+            </td>
+            <td>
+                <input type="text" id="gal-long2" value="">
+            </td>
+            <td>
+                <input type="button" id="calculate2" value="Convert!" onclick="gal_to_eq();dd_to_hms(2);dd_to_dms(2)">
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+
+<div class="ra-dec-output">
+    <table>
+        <tr>
+            <th>
+                RA (dd)
+            </th>
+            <th>
+                Dec (dd)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="ra2" value="">
+            </td>
+            <td>
+                <input type="text" id="dec2" value="">
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+
+<div class="ra-dec-hms-output">
+    <table>
+        <tr>
+            <th>
+                RA (hh:mm:ss)
+            </th>
+            <th>
+                Dec (dd:mm:ss)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="ra-hms2" value="">
+            </td>
+            <td>
+                <input type="text" id="dec-dms2" value="">
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
 
 </body>
 </html>
