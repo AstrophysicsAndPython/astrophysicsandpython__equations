@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Equatorial to Galactic coordinate converter</title>
+        <script src="EqToGal.js">
+        </script>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>
+                    Right ascension (dd)
+                </th>
+                <th>
+                    Declination (dd)
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="ra-input" id="ra1">
+                </td>
+                <td>
+                    <input type="text" name="dec-input" id="dec1">
+                </td>
+                <td>
+                    <input type="button" value="Calculate" onclick="to_galactic()"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Galactic latitude (b)
+                </th>
+                <th>
+                    Galactic longitude (l)
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="gal-lat-output" id="gal-lat1">
+                </td>
+                <td>
+                    <input type="text" name="gal-long-output" id="gal-long1">
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
