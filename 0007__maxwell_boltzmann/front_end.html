@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maxwell-Boltzmann distribution</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>    <script src="back_end.js"></script>
+</head>
+<body></body>
+<table>
+    <tr>
+        <td>\(m\ \ \ \ \ =\)</td>
+        <td><input type="text" name="mass_input" id="mass_input" oninput="calculations();make_plot();"></td>
+        <td>\(\text{amu}\)</td>
+    </tr>
+    <tr>
+        <td>\(T\ \ \ \ \ \ =\)</td>
+        <td><input type="text" name="temperature_input" id="temperature_input" oninput="calculations();make_plot();"></td>
+        <td>\(\text{K}\)</td>
+    </tr>
+    <tr>
+        <td> \(v_\text{rms}\ \  \approx \) </td>
+        <td><input type="text" name="" id="v_rms"></td>
+        <td> \(\text{m}\,\text{s}^{-1}\)</td>
+    </tr>
+    <tr>
+        <td> \(v_\text{p}\ \ \ \ \ \approx \) </td>
+        <td><input type="text" name="" id="v_p"></td>
+        <td> \(\text{m}\,\text{s}^{-1}\)</td>
+    </tr>
+    <tr>
+        <td> \(v_\text{mean} \approx\) </td>
+        <td><input type="text" name="" id="v_mean"></td>
+        <td> \(\text{m}\,\text{s}^{-1}\)</td>
+    </tr>
+</table>
+<canvas id="my_chart" style="width: 100%;"></canvas>
+</body>
+</html>
