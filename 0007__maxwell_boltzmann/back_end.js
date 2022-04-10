@@ -1,3 +1,4 @@
+mychart = null;
 max_v = 2.5e3;
 kB = 1.3806e-23;
 au_to_kg = 1.66054e-27;
@@ -22,8 +23,6 @@ function calculations() {
     document.getElementById("v_p").value = Math.round(vp);
     document.getElementById("v_mean").value = Math.round(vm);
     document.getElementById("v_rms").value = Math.round(vrms);
-
-
 }
 
 function maxwell()
@@ -35,7 +34,7 @@ function maxwell()
 
     out = [];
 
-    for (var i = 0; i < max_v; i += 50) {
+    for (var i = 0; i < max_v; i += 25) {
         f1 = 4 * Math.PI;
 
         f2 = 2 * Math.PI * kB * T;
@@ -67,15 +66,24 @@ function __linspace(start, nvalues, interval) {
     return r;
 }
 
+function reset(chart_object) {
+    chart_object.destroy();
+}
+
 function make_plot()
 {
+
     out = maxwell();
-    v = __linspace(0, out.length, 50);
+    v = __linspace(0, out.length, 25);
 
     m = document.getElementById("mass_input").value;
     T = document.getElementById("temperature_input").value;
 
-    new Chart(document.getElementById('my_chart'), {
+    if (mychart !== null) {
+        reset(mychart);
+    }
+
+    mychart = new Chart(document.getElementById("my_chart"), {
         type: 'line',
         data: {
             labels: v,
@@ -86,23 +94,25 @@ function make_plot()
                 }]
         },
         options: {
-            title: {
-                display: true,
-                text: 'Maxwell-Boltzmann speed distribution'
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Maxwell-Boltzmann speed distribution'
+                }
             },
             scales: {
-                yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Probability density (s/m)'
-                        }
-                    }],
-                xAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Speed (m/s)'
-                        }
-                    }]
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Speed (m/s)'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Probability density (s/m)'
+                    }
+                }
             }
         }
     });
