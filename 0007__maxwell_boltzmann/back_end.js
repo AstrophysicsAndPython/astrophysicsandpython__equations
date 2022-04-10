@@ -2,12 +2,12 @@ max_v = 2.5e3;
 kB = 1.3806e-23;
 au_to_kg = 1.66054e-27;
 
-m = document.getElementById("mass_input").value;
-T = document.getElementById("temperature_input").value;
-
-m = m * au_to_kg;
-
 function calculations() {
+    m = document.getElementById("mass_input").value;
+    T = document.getElementById("temperature_input").value;
+
+    m = m * au_to_kg;
+
     vp = 2 * kB * T;
     vp = Math.sqrt(vp / m);
 
@@ -28,6 +28,11 @@ function calculations() {
 
 function maxwell()
 {
+    m = document.getElementById("mass_input").value;
+    T = document.getElementById("temperature_input").value;
+
+    m = m * au_to_kg;
+
     out = [];
 
     for (var i = 0; i < max_v; i += 50) {
@@ -42,7 +47,7 @@ function maxwell()
         f3 = (m * Math.pow(i, 2)) / f3;
         f3 = Math.exp(-f3);
 
-        f4 = f1 * f2 * f3 * Math.pow(i,2);
+        f4 = f1 * f2 * f3 * Math.pow(i, 2);
 
         out.push(f4.toExponential());
     }
@@ -67,13 +72,16 @@ function make_plot()
     out = maxwell();
     v = __linspace(0, out.length, 50);
 
+    m = document.getElementById("mass_input").value;
+    T = document.getElementById("temperature_input").value;
+
     new Chart(document.getElementById('my_chart'), {
         type: 'line',
         data: {
             labels: v,
             datasets: [{
                     data: out,
-                    label: 'Speed distribution of a gas with m = ' + m/au_to_kg + ' u at T = ' + T + ' K',
+                    label: 'Speed distribution of a gas with m = ' + m + ' u at T = ' + T + ' K',
                     fill: false
                 }]
         },
