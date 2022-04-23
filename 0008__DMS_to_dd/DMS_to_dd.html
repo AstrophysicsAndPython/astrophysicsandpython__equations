@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>DMS to degree decimal conversion</title>
+        <script src="DMS_to_dd.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <h2>Convert degree minute second value to degree decimal</h2>
+        <table>
+            <tr>
+                <td style="text-align: center;">Degree</td>
+                <td style="text-align: center;">Minute</td>
+                <td style="text-align: center;">Seconds</td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td><input type="text" id="deg_input"></td>
+                <td><input type="text" id="min_input"></td>
+                <td><input type="text" id="sec_input"></td>
+                <td><input type="button" value="Convert" onclick="convert()"></td>
+            </tr>
+        </table>
+        <ul>
+            <li id="dd__round"></li>
+        </ul>
+    </body>
+</html>
