@@ -9,7 +9,7 @@ function convert()
         $('#dd__round').html('Error');
     } else
     {
-        if (deg > 0) {
+        if (deg >= 0) {
             ans = deg + min + sec;
         } else {
             ans = deg - min - sec;
