@@ -22,7 +22,8 @@ class LengthContraction:
         elif self.v == -1:
             raise errors.VelocityError('Velocity of the object cannot be less than 0.')
         elif self.c == -1:
-            raise errors.UnitError('Unit not passed correctly, please use \'m/s\' or \'rel\'')
+            raise errors.UnitError('Unit not passed correctly, please use '
+                                   '\'m/s\' or \'rel\'')
 
     def __length_contraction(self):
         return self.l0 * self.beta()
@@ -40,11 +41,15 @@ class LengthContraction:
 
         return self.__length_contraction()
 
-    def solver(self, rest_length: Optional[float] = None, relativistic_length: Optional[float] = None, velocity: Optional[float] = None) -> float:
+    def solver(self, rest_length: Optional[float] = None,
+               relativistic_length: Optional[float] = None,
+               velocity: Optional[float] = None) -> float:
+
         self.l0, self.lr, self.v = rest_length, relativistic_length, velocity
 
         self.__check()
 
         return [self.__length_contraction() if self.lr is None else
                 self.lr / self.beta() if self.l0 is None else
-                self.c * self.__inverse_beta() if np.logical_and(self.v is None, self.unit == 'm/s') else self.__inverse_beta()][0]
+                self.c * self.__inverse_beta() if self.v is None and self.unit == 'm/s'
+                else self.__inverse_beta()][0]
