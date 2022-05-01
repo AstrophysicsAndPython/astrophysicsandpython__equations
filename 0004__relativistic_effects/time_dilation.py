@@ -1,6 +1,7 @@
 """
 Created on Sun Dec  5 23:57:06 2021
 """
+
 from typing import Optional
 
 import numpy as np

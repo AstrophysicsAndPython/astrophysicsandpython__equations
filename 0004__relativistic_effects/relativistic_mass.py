@@ -25,11 +25,11 @@ class RelativisticMass:
             raise errors.UnitError('Unit not passed correctly, please use '
                                    '\'m/s\' or \'rel\'')
 
-    def __inverse_beta(self) -> float:
-        return np.sqrt(1 - (self.m0 / self.mr)**2)
-
     def __relativistic_mass(self):
         return self.m0 / self.beta()
+
+    def __inverse_beta(self) -> float:
+        return np.sqrt(1 - (self.m0 / self.mr)**2)
 
     def beta(self) -> float:
         return np.sqrt(1 - (self.v / self.c)**2)
@@ -49,7 +49,13 @@ class RelativisticMass:
 
         self.__check()
 
-        return [self.__relativistic_mass() if self.mr is None else
-                self.mr * self.beta() if self.m0 is None else
-                self.c * self.__inverse_beta() if self.v is None and self.unit == 'm/s'
-                else self.__inverse_beta()][0]
+        if self.mr is None:
+            out = self.__relativistic_mass()
+        elif self.m0 is None:
+            out = self.mr * self.beta()
+        elif self.v is None and self.unit == 'm/s':
+            out = self.c * self.__inverse_beta()
+        else:
+            out = self.__inverse_beta()
+
+        return out

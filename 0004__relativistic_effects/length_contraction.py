@@ -14,7 +14,7 @@ class LengthContraction:
     def __init__(self, unit: str = 'm/s'):
         self.unit = unit
         self.v, self.l0, self.lr = None, None, None
-        self.c = 299792458 if self.unit == 'm/s' else 1 if self.unit == 'rel' else -1
+        self.c = 299792458 if unit == 'm/s' else 1 if self.unit == 'rel' else -1
 
     def __check(self):
         if np.logical_or(self.l0 == -1, self.lr == -1):
